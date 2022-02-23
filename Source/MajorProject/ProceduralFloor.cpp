@@ -12,9 +12,9 @@ AProceduralFloor::AProceduralFloor()
 	Floor = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FloorComponent"));
 	SetRootComponent(Floor);
 
-	GridSizeX = 5;
-	GridSizeY = 5;
-	SquareWidth = 200.f;
+	GridSizeX = 2;
+	GridSizeY = 2;
+	SquareWidth = 5000.f;
 
 	TopLeft = FVector(0.f);
 	BottomRight = FVector(1000.f, 1000.f, 0.f);
@@ -61,14 +61,14 @@ void AProceduralFloor::CreateGrid()
 	{
 		FVector Start = TopLeft + FVector(i * SquareWidth, 0.f, GridHeight);
 		FVector End = Start + FVector(0.f, RoomLength, GridHeight);
-		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 
 	for (int32 i = 0; i < GridSizeX + 1; i++)
 	{
 		FVector Start = TopLeft + FVector(0.f, i * SquareWidth, GridHeight);
 		FVector End = Start + FVector(RoomWidth, 0.f, GridHeight);
-		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 }
 
@@ -76,7 +76,7 @@ FVector AProceduralFloor::GetRandomPointInSquare(const FVector& UpperLeft, const
 {
 	float RandomX = FMath::FRandRange(UpperLeft.X, LowerRight.X);
 	float RandomY = FMath::FRandRange(UpperLeft.Y, LowerRight.Y);
-
+	
 	return FVector(RandomX, RandomY, 0.f);
 }
 
@@ -90,11 +90,37 @@ void AProceduralFloor::PlacePointsOnGrid()
 			FVector LowerRight(i * SquareWidth + SquareWidth - Radius, j * SquareWidth + SquareWidth - Radius, GridHeight);
 			FVector RandomPointInSquare = GetRandomPointInSquare(UpperLeft, LowerRight);
 
+			//Raycast down from the random point to the ground
+			FVector Start = GetRandomPointInSquare(UpperLeft, LowerRight);
+			FVector End = ((-GetActorUpVector() * TraceDistance) + Start);
+
+			FHitResult Hit;
+			FCollisionQueryParams TraceParams;
+			bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, TraceParams);
+			//DrawDebugLine(GetWorld(), Start, End, FColor::Orange, false, 10.0f);
+
+			if(bHit)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
+				FVector impact = Hit.ImpactPoint;
+
+				float RandomYaw = FMath::FRandRange(0.f, 360.f);
+				GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
+			}
+
+			
+
+			
+
 			//DrawDebugPoint(GetWorld(), RandomPointInSquare, 5.f, FColor::Red, true);
 
-			float RandomYaw = FMath::FRandRange(0.f, 360.f);
-			GetWorld()->SpawnActor<AActor>(ShrineClass, RandomPointInSquare, FRotator(0.f, RandomYaw, 0.f));
 		}
 	}
 }
+
+//void AProceduralFloor::Trace()
+//{
+//	FVector Start = GetRandomPointInSquare(UpperLeft, LowerRight);
+//	FVector End = ((GetForwardVector() * TraceDistance) + Start);
+//}
 

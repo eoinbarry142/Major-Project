@@ -37,6 +37,7 @@ private:
 	float GridHeight;
 	float RoomLength;
 	float RoomWidth;
+	float TraceDistance = 10000.0f;
 
 	FVector TopLeft;
 	FVector BottomRight;
@@ -50,4 +51,6 @@ private:
 	FVector GetRandomPointInSquare(const FVector& UpperLeft, const FVector& LowerRight);
 
 	void PlacePointsOnGrid();
+
+	void Trace();
 };
