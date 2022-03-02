@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\MajorProject.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{8820E8A7-ABA9-4CE9-854D-6AE24B3C2DB4}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\MajorProject.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\MajorProjectEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.gitignore" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{F053F1D9-67F6-46E6-BEAD-15D85547977D}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{612D35A0-40E7-4D24-9CF4-AA860CFFAB07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ALS-Community">
+      <UniqueIdentifier>{5782DA53-2172-472A-842A-66322B369164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ALS-Community\Source">
+      <UniqueIdentifier>{12A1E29B-8276-46F6-95A6-B3EC5024A627}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP">
+      <UniqueIdentifier>{1F5F3E83-0D23-4D5A-9A88-A4C6E000E981}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\ALSV4_CPP.Build.cs">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP</Filter>
+    </None>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\ALSV4_CPP.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\ALSV4_CPP.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Private">
+      <UniqueIdentifier>{255647C3-9D64-431F-A863-59C68F5C6A7A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Private\AI">
+      <UniqueIdentifier>{FF76CFCF-DA87-4494-9195-4C0DE24E0DE7}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\AI\ALSAIController.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\AI\ALS_BTTask_GetRandomLocation.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\AI\ALS_BTTask_SetFocusToPlayer.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\AI</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character">
+      <UniqueIdentifier>{CAAB7F99-7F14-4AB8-8EEB-E43AF43BB878}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\ALSBaseCharacter.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\ALSCharacter.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\ALSCharacterMovementComponent.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\ALSPlayerCameraManager.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\ALSPlayerController.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\LightSwitch.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\MyInteractionInterface.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation">
+      <UniqueIdentifier>{C2B8B988-AB9C-48B1-96AE-27E76D9375F7}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\ALSCharacterAnimInstance.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\ALSPlayerCameraBehavior.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify">
+      <UniqueIdentifier>{61B87D45-304A-4601-ADF9-16ABA4AC685E}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify\ALSAnimNotifyCameraShake.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify\ALSAnimNotifyFootstep.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify\ALSAnimNotifyGroundedEntryState.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify\ALSNotifyStateEarlyBlendOut.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify\ALSNotifyStateMovementAction.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify\ALSNotifyStateOverlayOverride.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Character\Animation\Notify</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Private\Components">
+      <UniqueIdentifier>{2DF47159-44F9-4447-8D4D-D53E745AC292}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Components\ALSDebugComponent.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Components\ALSMantleComponent.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Components</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Private\Library">
+      <UniqueIdentifier>{C445CD1F-7088-4D5F-87C6-FA4E63F9CF85}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Private\Library\ALSMathLibrary.cpp">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Private\Library</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Public">
+      <UniqueIdentifier>{CD07AB75-CE8D-4647-9E51-CB5C0EAB3AAB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Public\AI">
+      <UniqueIdentifier>{ECD56AE9-E6AD-4015-97EF-8566DA1C32E5}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\AI\ALSAIController.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\AI\ALS_BTTask_GetRandomLocation.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\AI\ALS_BTTask_SetFocusToPlayer.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\AI</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character">
+      <UniqueIdentifier>{2651F153-7437-4083-AF0B-4FA86ECD6AF5}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\ALSBaseCharacter.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\ALSCharacter.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\ALSCharacterMovementComponent.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\ALSPlayerCameraManager.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\ALSPlayerController.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\LightSwitch.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\MyInteractionInterface.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation">
+      <UniqueIdentifier>{02E7A274-4534-4E43-8135-596FACEC30DB}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\ALSCharacterAnimInstance.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\ALSPlayerCameraBehavior.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify">
+      <UniqueIdentifier>{ED984EC9-757C-455A-BA56-BB972C4867C4}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify\ALSAnimNotifyCameraShake.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify\ALSAnimNotifyFootstep.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify\ALSAnimNotifyGroundedEntryState.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify\ALSNotifyStateEarlyBlendOut.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify\ALSNotifyStateMovementAction.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify\ALSNotifyStateOverlayOverride.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Character\Animation\Notify</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Public\Components">
+      <UniqueIdentifier>{87D0DE5E-CB53-4B1A-925A-E5C301C43D63}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Components\ALSDebugComponent.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Components\ALSMantleComponent.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Components</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library">
+      <UniqueIdentifier>{AC63A52E-A178-4849-9DC4-E88A06C34217}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library\ALSAnimationStructLibrary.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library\ALSCharacterEnumLibrary.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library\ALSCharacterStructLibrary.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library\ALSMathLibrary.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library\ALSStructEnumLibrary.h">
+      <Filter>Plugins\ALS-Community\Source\ALSV4_CPP\Public\Library</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\ALS-Community\ALSV4_CPP.uplugin">
+      <Filter>Plugins\ALS-Community</Filter>
+    </None>
+    <Filter Include="Plugins\ALS-Community\Config">
+      <UniqueIdentifier>{9800A44A-7321-4F49-BE36-975964B52EA2}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ALS-Community\Config\DefaultInput.ini">
+      <Filter>Plugins\ALS-Community\Config</Filter>
+    </None>
+    <Filter Include="Plugins\ALS-Community\Resources">
+      <UniqueIdentifier>{29131F30-EB25-44D1-B510-F81B52936E17}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\ALS-Community\Resources\Icon128.png">
+      <Filter>Plugins\ALS-Community\Resources</Filter>
+    </None>
+    <None Include="..\..\Plugins\ALS-Community\Resources\Readme_Content_1.png">
+      <Filter>Plugins\ALS-Community\Resources</Filter>
+    </None>
+    <None Include="..\..\Plugins\ALS-Community\Resources\Readme_Content_2.gif">
+      <Filter>Plugins\ALS-Community\Resources</Filter>
+    </None>
+    <Filter Include="Source\MajorProject">
+      <UniqueIdentifier>{6733EE49-A059-4E59-96AD-CD79CCCE4D6A}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\MajorProject\InteractionInterface.cpp">
+      <Filter>Source\MajorProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MajorProject\InteractionInterface.h">
+      <Filter>Source\MajorProject</Filter>
+    </ClInclude>
+    <None Include="..\..\Source\MajorProject\MajorProject.Build.cs">
+      <Filter>Source\MajorProject</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\MajorProject\MajorProject.cpp">
+      <Filter>Source\MajorProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MajorProject\MajorProject.h">
+      <Filter>Source\MajorProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MajorProject\MajorProjectCharacter.cpp">
+      <Filter>Source\MajorProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MajorProject\MajorProjectCharacter.h">
+      <Filter>Source\MajorProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MajorProject\MajorProjectGameMode.cpp">
+      <Filter>Source\MajorProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MajorProject\MajorProjectGameMode.h">
+      <Filter>Source\MajorProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MajorProject\ProceduralFloor.cpp">
+      <Filter>Source\MajorProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MajorProject\ProceduralFloor.h">
+      <Filter>Source\MajorProject</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\MajorProject\ShrineInteractable.cpp">
+      <Filter>Source\MajorProject</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MajorProject\ShrineInteractable.h">
+      <Filter>Source\MajorProject</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

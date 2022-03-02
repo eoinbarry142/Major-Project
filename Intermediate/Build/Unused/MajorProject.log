@@ -1,0 +1,16 @@
+﻿  Using 'git status' to determine working set for adaptive non-unity build (H:\Major Project\Major-Project).
+  Building MajorProjectEditor...
+  Using Visual Studio 2017 14.16.27045 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+  Building 6 actions with 16 processes...
+    [1/6] UE4Editor-MajorProject-0105.lib
+       Creating library H:\Major Project\Major-Project\Intermediate\Build\Win64\UE4Editor\Development\MajorProject\UE4Editor-MajorProject-0105.lib and object H:\Major Project\Major-Project\Intermediate\Build\Win64\UE4Editor\Development\MajorProject\UE4Editor-MajorProject-0105.exp
+    [2/6] UE4Editor-MajorProject-0105.dll
+       Creating library H:\Major Project\Major-Project\Intermediate\Build\Win64\UE4Editor\Development\MajorProject\UE4Editor-MajorProject-0105.suppressed.lib and object H:\Major Project\Major-Project\Intermediate\Build\Win64\UE4Editor\Development\MajorProject\UE4Editor-MajorProject-0105.suppressed.exp
+    [3/6] Module.ALSV4_CPP.cpp
+    [4/6] UE4Editor-ALSV4_CPP-0105.lib
+       Creating library H:\Major Project\Major-Project\Plugins\ALS-Community\Intermediate\Build\Win64\UE4Editor\Development\ALSV4_CPP\UE4Editor-ALSV4_CPP-0105.lib and object H:\Major Project\Major-Project\Plugins\ALS-Community\Intermediate\Build\Win64\UE4Editor\Development\ALSV4_CPP\UE4Editor-ALSV4_CPP-0105.exp
+    [5/6] UE4Editor-ALSV4_CPP-0105.dll
+       Creating library H:\Major Project\Major-Project\Plugins\ALS-Community\Intermediate\Build\Win64\UE4Editor\Development\ALSV4_CPP\UE4Editor-ALSV4_CPP-0105.suppressed.lib and object H:\Major Project\Major-Project\Plugins\ALS-Community\Intermediate\Build\Win64\UE4Editor\Development\ALSV4_CPP\UE4Editor-ALSV4_CPP-0105.suppressed.exp
+    [6/6] MajorProjectEditor.target
+  Total time in Parallel executor: 159.84 seconds
+  Total execution time: 160.49 seconds
