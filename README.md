@@ -1,13 +1,14 @@
 # Major-Project
 ![project](https://user-images.githubusercontent.com/93496368/156871820-e4646de9-f7f5-49fe-a51a-06b2a0b70c66.png)
+
 This is my 4th year Major Project that is currently in development. It is a game called Mana developed using Unreal Engine 4 in C++.
 
-##Features
+## Features
 * Procedural generation scripts written in C++ to randomly spawn shrines on complex landscape.
 * Player interaction with shrines.
 * More features currently in development...
 
-##Installation
+## Installation
 The game is being developed in Unreal Engine 4.27.2 which is required to open the project. Visual Studio may also be required to generate project files.
 
 Clone the repository to a folder on your computer.
