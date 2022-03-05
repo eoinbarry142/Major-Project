@@ -1,9 +1,0 @@
-{
-	"SourceFiles": [
-		"H:\\Major Project\\Major-Project\\Source\\MajorProject\\MajorProject.Build.cs",
-		"H:\\Major Project\\Major-Project\\Plugins\\ALS-Community\\Source\\ALSV4_CPP\\ALSV4_CPP.Build.cs",
-		"H:\\Major Project\\Major-Project\\Source\\MajorProject.Target.cs",
-		"H:\\Major Project\\Major-Project\\Source\\MajorProjectEditor.Target.cs"
-	],
-	"EngineVersion": "4.27.2"
-}
