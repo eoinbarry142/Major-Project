@@ -14,6 +14,9 @@
 
 AMajorProjectCharacter::AMajorProjectCharacter()
 {
+	InteractionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Interaction Box"));
+	InteractionBox->SetupAttachment(RootComponent);
+
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
 
@@ -52,6 +55,8 @@ AMajorProjectCharacter::AMajorProjectCharacter()
 
 void AMajorProjectCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
+	InteractionBox->OnComponentBeginOverlap.AddDynamic(this, &AMajorProjectCharacter::OnBoxBeginOverlap);
+
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
@@ -136,5 +141,17 @@ void AMajorProjectCharacter::MoveRight(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
+	}
+}
+
+void AMajorProjectCharacter::OnBoxBeginOverlap(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	Interface = Cast<IInteractionInterface>(OtherActor);
+
+	if (Interface)
+	{
+		Interface->InteractWithMe();
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted"));
 	}
 }

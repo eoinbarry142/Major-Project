@@ -25,15 +25,15 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	//virtual void InteractWithMe() override;
+	virtual void InteractWithMe() override;
 
 private:
-	/*UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere)
 	USceneComponent* _RootComponent;
 
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* ShrineMesh;
 
 	UPROPERTY(EditAnywhere)
-	UPointLightComponent* Light;*/
+	UPointLightComponent* Light;
 };
