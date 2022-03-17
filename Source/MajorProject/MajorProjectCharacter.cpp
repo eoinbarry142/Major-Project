@@ -8,12 +8,16 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "ShrineInteractable.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AMajorProjectCharacter
 
 AMajorProjectCharacter::AMajorProjectCharacter()
 {
+
+	//shrineCount = 0;
+
 	InteractionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Interaction Box"));
 	InteractionBox->SetupAttachment(RootComponent);
 
@@ -56,11 +60,15 @@ AMajorProjectCharacter::AMajorProjectCharacter()
 void AMajorProjectCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	InteractionBox->OnComponentBeginOverlap.AddDynamic(this, &AMajorProjectCharacter::OnBoxBeginOverlap);
+	InteractionBox->OnComponentEndOverlap.AddDynamic(this, &AMajorProjectCharacter::OnBoxEndOverlap);
 
 	// Set up gameplay key bindings
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	//Interact with object
+	PlayerInputComponent->BindAction("Interact", IE_Pressed, this, &AMajorProjectCharacter::OnInteract);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &AMajorProjectCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AMajorProjectCharacter::MoveRight);
@@ -144,14 +152,38 @@ void AMajorProjectCharacter::MoveRight(float Value)
 	}
 }
 
+void AMajorProjectCharacter::OnInteract()
+{
+	if (Interface)
+	{
+		Interface->InteractWithMe();
+	}
+}
+
 void AMajorProjectCharacter::OnBoxBeginOverlap(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	Interface = Cast<IInteractionInterface>(OtherActor);
 
 	if (Interface)
 	{
-		Interface->InteractWithMe();
-		if (GEngine)
-			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted"));
+		Interface->ShowInteractionWidget();
 	}
 }
+
+void AMajorProjectCharacter::OnBoxEndOverlap(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
+{
+	if (Interface) {
+		Interface->HideInteractionWidget();
+		Interface = nullptr;
+	}
+
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("lap"));
+
+}
+
+
+//void AMajorProjectCharacter::shrineCountIncrement()
+//{
+//	shrineCount++;
+//}

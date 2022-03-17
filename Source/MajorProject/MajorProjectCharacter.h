@@ -21,6 +21,8 @@ class AMajorProjectCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 public:
+	//extern int shrineCount;
+
 	AMajorProjectCharacter();
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
@@ -76,7 +78,13 @@ public:
 
 	IInteractionInterface* Interface = nullptr;
 
+	void OnInteract();
+
 	UFUNCTION()
 	void OnBoxBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+	void OnBoxEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
 };
 

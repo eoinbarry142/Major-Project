@@ -2,6 +2,7 @@
 
 
 #include "ShrineInteractable.h"
+#include "MajorProjectCharacter.h"
 
 // Sets default values
 AShrineInteractable::AShrineInteractable()
@@ -17,6 +18,10 @@ AShrineInteractable::AShrineInteractable()
 
 	Light = CreateDefaultSubobject<UPointLightComponent>(TEXT("Light bulb"));
 	Light->SetupAttachment(RootComponent);
+
+	InteractionWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("Interaction Widget"));
+	InteractionWidget->SetupAttachment(RootComponent);
+	//InteractionWidget->SetVisibility(false);
 }
 
 // Called when the game starts or when spawned
@@ -24,6 +29,9 @@ void AShrineInteractable::BeginPlay()
 {
 	Super::BeginPlay();
 	Light->SetIntensity(0);
+	activated = false;
+	//InteractionWidget->SetOpacityFromTexture(1);
+	InteractionWidget->SetVisibility(false);
 }
 
 // Called every frame
@@ -35,8 +43,40 @@ void AShrineInteractable::Tick(float DeltaTime)
 
 void AShrineInteractable::InteractWithMe()
 {
-	UE_LOG(LogTemp, Warning, TEXT("You have interacted with me!"));
-	Light->SetIntensity(10000);
+	if (activated == false) {
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted"));
+		Light->SetIntensity(10000);
+		activated = true;
+		//InteractionWidget->SetVisibility(true);
+		//InteractionWidget->SetVisibility(true, false);
+		//int shrineCount = shrineCount + 1;
+		//increment();
+	}
+
+
+}
+
+//int global_variable = 0;
+
+//int increment(void) { return global_variable++; }
+
+
+
+
+
+void AShrineInteractable::ShowInteractionWidget()
+{
+	//InteractionWidget->SetOpacityFromTexture(0);
+	//InteractionWidget->SetActive(true);
+	InteractionWidget->SetVisibility(true);
+}
+
+void AShrineInteractable::HideInteractionWidget()
+{
+	//InteractionWidget->SetOpacityFromTexture(1);
+	//InteractionWidget->SetActive(true);
+	InteractionWidget->SetVisibility(false);
 }
 
 
