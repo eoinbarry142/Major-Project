@@ -37,6 +37,8 @@ public:
 	virtual void ShowInteractionWidget() override;
 	virtual void HideInteractionWidget() override;
 
+	//IInteractionInterface* Interface = nullptr;
+
 private:
 	UPROPERTY(EditAnywhere)
 	USceneComponent* _RootComponent;

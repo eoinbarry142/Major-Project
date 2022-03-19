@@ -14,7 +14,7 @@ AProceduralFloor::AProceduralFloor()
 
 	GridSizeX = 2;
 	GridSizeY = 2;
-	SquareWidth = 5000.f;
+	SquareWidth = 15000.f;
 
 	TopLeft = FVector(0.f);
 	BottomRight = FVector(1000.f, 1000.f, 0.f);
@@ -61,14 +61,14 @@ void AProceduralFloor::CreateGrid()
 	{
 		FVector Start = TopLeft + FVector(i * SquareWidth, 0.f, GridHeight);
 		FVector End = Start + FVector(0.f, RoomLength, GridHeight);
-		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 
 	for (int32 i = 0; i < GridSizeX + 1; i++)
 	{
 		FVector Start = TopLeft + FVector(0.f, i * SquareWidth, GridHeight);
 		FVector End = Start + FVector(RoomWidth, 0.f, GridHeight);
-		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 }
 

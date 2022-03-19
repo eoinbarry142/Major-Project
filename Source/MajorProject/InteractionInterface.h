@@ -26,4 +26,10 @@ public:
 
 	virtual void ShowInteractionWidget();
 	virtual void HideInteractionWidget();
+
+	//virtual void ShrineCountIncrement();
+
+	
+
+	//main();
 };

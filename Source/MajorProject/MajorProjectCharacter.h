@@ -21,7 +21,6 @@ class AMajorProjectCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* FollowCamera;
 public:
-	//extern int shrineCount;
 
 	AMajorProjectCharacter();
 
@@ -81,10 +80,15 @@ public:
 	void OnInteract();
 
 	UFUNCTION()
+	void ShrineCountIncrement();
+
+	UPROPERTY(VisibleAnywhere)
+	int shrineCount = 0;
+
+	UFUNCTION()
 	void OnBoxBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 	UFUNCTION()
 	void OnBoxEndOverlap(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-
 };
 

@@ -9,13 +9,13 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "ShrineInteractable.h"
+#include <string> 
 
 //////////////////////////////////////////////////////////////////////////
 // AMajorProjectCharacter
 
 AMajorProjectCharacter::AMajorProjectCharacter()
 {
-
 	//shrineCount = 0;
 
 	InteractionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("Interaction Box"));
@@ -157,6 +157,7 @@ void AMajorProjectCharacter::OnInteract()
 	if (Interface)
 	{
 		Interface->InteractWithMe();
+		//shrineCountIncrement();
 	}
 }
 
@@ -168,6 +169,7 @@ void AMajorProjectCharacter::OnBoxBeginOverlap(UPrimitiveComponent * OverlappedC
 	{
 		Interface->ShowInteractionWidget();
 	}
+	//Oui();
 }
 
 void AMajorProjectCharacter::OnBoxEndOverlap(UPrimitiveComponent * OverlappedComp, AActor * OtherActor, UPrimitiveComponent * OtherComp, int32 OtherBodyIndex)
@@ -176,14 +178,12 @@ void AMajorProjectCharacter::OnBoxEndOverlap(UPrimitiveComponent * OverlappedCom
 		Interface->HideInteractionWidget();
 		Interface = nullptr;
 	}
-
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("lap"));
-
 }
 
-
-//void AMajorProjectCharacter::shrineCountIncrement()
-//{
-//	shrineCount++;
-//}
+void AMajorProjectCharacter::ShrineCountIncrement()
+{
+	//if (GEngine)
+	//	GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("called"));
+	shrineCount = shrineCount + 1;
+	UE_LOG(LogTemp, Warning, TEXT("Text, %d"), shrineCount);
+}

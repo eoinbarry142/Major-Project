@@ -2,7 +2,7 @@
 
 
 #include "ShrineInteractable.h"
-#include "MajorProjectCharacter.h"
+//#include "MajorProjectCharacter.h"
 
 // Sets default values
 AShrineInteractable::AShrineInteractable()
@@ -48,10 +48,15 @@ void AShrineInteractable::InteractWithMe()
 			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted"));
 		Light->SetIntensity(10000);
 		activated = true;
-		//InteractionWidget->SetVisibility(true);
-		//InteractionWidget->SetVisibility(true, false);
-		//int shrineCount = shrineCount + 1;
-		//increment();
+		InteractionWidget->SetVisibility(false);
+		for (TObjectIterator<AMajorProjectCharacter> Itr; Itr; ++Itr)
+		{
+			if (Itr->IsA(AMajorProjectCharacter::StaticClass()))
+			{
+				AMajorProjectCharacter* actorClass = *Itr;
+				actorClass->ShrineCountIncrement();
+			}
+		}
 	}
 
 
@@ -69,7 +74,9 @@ void AShrineInteractable::ShowInteractionWidget()
 {
 	//InteractionWidget->SetOpacityFromTexture(0);
 	//InteractionWidget->SetActive(true);
-	InteractionWidget->SetVisibility(true);
+	if (activated == false) {
+		InteractionWidget->SetVisibility(true);
+	}
 }
 
 void AShrineInteractable::HideInteractionWidget()
@@ -78,5 +85,7 @@ void AShrineInteractable::HideInteractionWidget()
 	//InteractionWidget->SetActive(true);
 	InteractionWidget->SetVisibility(false);
 }
+
+
 
 
