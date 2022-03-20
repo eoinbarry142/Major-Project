@@ -1,5 +1,5 @@
 # Major-Project
-![project](https://user-images.githubusercontent.com/93496368/156871820-e4646de9-f7f5-49fe-a51a-06b2a0b70c66.png)
+![Mana](https://user-images.githubusercontent.com/93496368/159184271-b6eb870e-3307-4024-8279-0babc9348740.png)
 
 This is my 4th year Major Project that is currently in development. It is a game called Mana developed using Unreal Engine 4 in C++.
 
