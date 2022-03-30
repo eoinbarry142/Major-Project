@@ -22,7 +22,11 @@ AShrineInteractable::AShrineInteractable()
 	InteractionWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("Interaction Widget"));
 	InteractionWidget->SetupAttachment(RootComponent);
 	//InteractionWidget->SetVisibility(false);
+
+	MaterialOne = CreateDefaultSubobject<UMaterialInterface>("MaterialOne");
+	MaterialTwo = CreateDefaultSubobject<UMaterialInterface>("MaterialTwo");
 }
+
 
 // Called when the game starts or when spawned
 void AShrineInteractable::BeginPlay()
@@ -32,6 +36,7 @@ void AShrineInteractable::BeginPlay()
 	activated = false;
 	//InteractionWidget->SetOpacityFromTexture(1);
 	InteractionWidget->SetVisibility(false);
+	ShrineMesh->SetMaterial(0, MaterialTwo);
 }
 
 // Called every frame
@@ -49,6 +54,23 @@ void AShrineInteractable::InteractWithMe()
 		Light->SetIntensity(10000);
 		activated = true;
 		InteractionWidget->SetVisibility(false);
+
+		ShrineMesh->SetMaterial(0, MaterialOne);
+
+		/*if (bChooseOne == true)
+		{
+			if (GEngine)
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("MaterialOne"));
+			ShrineMesh->SetMaterial(0, MaterialOne);
+		}
+		else {
+			ShrineMesh->SetMaterial(0, MaterialTwo);
+			if (GEngine)
+				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("MaterialTwo"));
+		}*/
+
+		//ShrineMesh->SetMaterial(0, bChooseOne ? MaterialOne : MaterialTwo);
+
 		for (TObjectIterator<AMajorProjectCharacter> Itr; Itr; ++Itr)
 		{
 			if (Itr->IsA(AMajorProjectCharacter::StaticClass()))

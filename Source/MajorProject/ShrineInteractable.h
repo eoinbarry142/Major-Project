@@ -25,11 +25,6 @@ public:
 	//UFUNCTION()
 	//void shrineCountIncrement();
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void InteractWithMe() override;
@@ -38,6 +33,10 @@ public:
 	virtual void HideInteractionWidget() override;
 
 	//IInteractionInterface* Interface = nullptr;
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY(EditAnywhere)
@@ -53,4 +52,12 @@ private:
 	UWidgetComponent* InteractionWidget;
 
 	bool activated;
+
+	UPROPERTY(EditAnywhere, Category = "Materials")
+	UMaterialInterface* MaterialOne;
+	UPROPERTY(EditAnywhere, Category = "Materials")
+	UMaterialInterface* MaterialTwo;
+
+	UPROPERTY(EditAnywhere, Category = "Materials")
+	bool bChooseOne = true;
 };
