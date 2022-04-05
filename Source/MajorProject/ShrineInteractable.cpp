@@ -23,8 +23,8 @@ AShrineInteractable::AShrineInteractable()
 	InteractionWidget->SetupAttachment(RootComponent);
 	//InteractionWidget->SetVisibility(false);
 
-	MaterialOne = CreateDefaultSubobject<UMaterialInterface>("MaterialOne");
-	MaterialTwo = CreateDefaultSubobject<UMaterialInterface>("MaterialTwo");
+	//MaterialOne = CreateDefaultSubobject<UMaterialInterface>("MaterialOne");
+	//MaterialTwo = CreateDefaultSubobject<UMaterialInterface>("MaterialTwo");
 }
 
 
@@ -36,7 +36,7 @@ void AShrineInteractable::BeginPlay()
 	activated = false;
 	//InteractionWidget->SetOpacityFromTexture(1);
 	InteractionWidget->SetVisibility(false);
-	ShrineMesh->SetMaterial(0, MaterialTwo);
+	//ShrineMesh->SetMaterial(0, MaterialTwo);
 }
 
 // Called every frame
@@ -48,28 +48,32 @@ void AShrineInteractable::Tick(float DeltaTime)
 
 void AShrineInteractable::InteractWithMe()
 {
+
 	if (activated == false) {
 		if (GEngine)
 			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted"));
-		Light->SetIntensity(10000);
+		//Light->SetIntensity(10000);
 		activated = true;
 		InteractionWidget->SetVisibility(false);
 
-		ShrineMesh->SetMaterial(0, MaterialOne);
+		//ShrineMesh->SetMaterial(0, MaterialOne);
 
-		/*if (bChooseOne == true)
-		{
-			if (GEngine)
-				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("MaterialOne"));
-			ShrineMesh->SetMaterial(0, MaterialOne);
-		}
-		else {
-			ShrineMesh->SetMaterial(0, MaterialTwo);
-			if (GEngine)
-				GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("MaterialTwo"));
-		}*/
+		//Material = ShrineMesh->GetMaterial(0);
+		//UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
+		//ShrineMesh->SetMaterial(0, DynamicMaterial);
+		//DynamicMaterial->SetScalarParameterValue(TEXT("Runes"), 1);
 
-		//ShrineMesh->SetMaterial(0, bChooseOne ? MaterialOne : MaterialTwo);
+		Material = ShrineMesh->GetMaterial(0);
+		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
+		ShrineMesh->SetMaterial(0, DynamicMaterial);
+		//DynamicMaterial->SetScalarParameterValue(TEXT("Runes"), temp);
+		//temp += 0.01f;
+		GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AShrineInteractable::OnTimerEnd, 0.01f, false);
+		
+		//GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle3, this, &AShrineInteractable::onTimerEnd, 1.f, false);
+		//GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle4, this, &AShrineInteractable::onTimerEnd, 1.f, false);
+
+		//ShrineMesh->SetScalarParameterValue(Runes, 1);
 
 		for (TObjectIterator<AMajorProjectCharacter> Itr; Itr; ++Itr)
 		{
@@ -80,17 +84,7 @@ void AShrineInteractable::InteractWithMe()
 			}
 		}
 	}
-
-
 }
-
-//int global_variable = 0;
-
-//int increment(void) { return global_variable++; }
-
-
-
-
 
 void AShrineInteractable::ShowInteractionWidget()
 {
@@ -108,6 +102,13 @@ void AShrineInteractable::HideInteractionWidget()
 	InteractionWidget->SetVisibility(false);
 }
 
+void AShrineInteractable::OnTimerEnd()
+{
+	ShrineMesh->SetScalarParameterValueOnMaterials(TEXT("Runes"), temp);
+	temp += 0.01f;
+	//if (GEngine)
+	//	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("YOU WIN"));
 
-
-
+	if (temp < 1.0f)
+		GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AShrineInteractable::OnTimerEnd, 0.01f, false);
+}

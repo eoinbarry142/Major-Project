@@ -185,5 +185,9 @@ void AMajorProjectCharacter::ShrineCountIncrement()
 	//if (GEngine)
 	//	GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("called"));
 	shrineCount = shrineCount + 1;
-	UE_LOG(LogTemp, Warning, TEXT("Text, %d"), shrineCount);
+	//UE_LOG(LogTemp, Warning, TEXT("Text, %d"), shrineCount);
+
+	if (shrineCount == 4)
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("YOU WIN"));
 }

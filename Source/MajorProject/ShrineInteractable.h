@@ -20,6 +20,8 @@ public:
 	// Sets default values for this actor's properties
 	AShrineInteractable();
 
+	//UMaterialParameterCollection* collection;
+
 	//extern int global_variable;
 
 	//UFUNCTION()
@@ -53,11 +55,26 @@ private:
 
 	bool activated;
 
-	UPROPERTY(EditAnywhere, Category = "Materials")
-	UMaterialInterface* MaterialOne;
-	UPROPERTY(EditAnywhere, Category = "Materials")
-	UMaterialInterface* MaterialTwo;
+	bool HasWaited = false;
 
-	UPROPERTY(EditAnywhere, Category = "Materials")
-	bool bChooseOne = true;
+	//FTimerHandle _loopTimerHandle3;
+	//FTimerHandle _loopTimerHandle4;
+
+	//UPROPERTY(EditAnywhere, Category = "Materials")
+	//UMaterialInterface* MaterialOne;
+
+	//UPROPERTY(EditAnywhere, Category = "Materials")
+	//UMaterialInterface* MaterialTwo;
+
+	UMaterialInterface* Material;
+
+	float temp = 0.01f;
+
+	FTimerHandle _loopTimerHandle;
+
+	UFUNCTION()
+	void OnTimerEnd();
+
+	//UPROPERTY(EditAnywhere, Category = "Materials")
+	//bool bChooseOne = true;
 };

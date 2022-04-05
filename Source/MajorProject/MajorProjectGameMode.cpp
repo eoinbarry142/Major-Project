@@ -3,6 +3,8 @@
 #include "MajorProjectGameMode.h"
 #include "MajorProjectCharacter.h"
 #include "UObject/ConstructorHelpers.h"
+#include "MenuHUD.h"
+#include "MenuPlayerController.h"
 
 AMajorProjectGameMode::AMajorProjectGameMode()
 {
@@ -12,4 +14,7 @@ AMajorProjectGameMode::AMajorProjectGameMode()
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;
 	}
+
+	PlayerControllerClass = AMenuPlayerController::StaticClass();
+	HUDClass = AMenuHUD::StaticClass();
 }
