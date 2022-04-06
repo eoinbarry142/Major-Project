@@ -75,6 +75,9 @@ private:
 	UFUNCTION()
 	void OnTimerEnd();
 
+	UPROPERTY(EditAnywhere, Category = LightSwitch)
+		USoundBase* shrineActivateSound;
+
 	//UPROPERTY(EditAnywhere, Category = "Materials")
 	//bool bChooseOne = true;
 };

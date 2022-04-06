@@ -33,10 +33,10 @@ void SMainMenuWidget::Construct(const FArguments & InArgs)
 			+ SOverlay::Slot()
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)
-			[
-				SNew(SImage)
-				.ColorAndOpacity(FColor::Black)
-			]
+			//[
+			//	SNew(SImage)
+			//	.ColorAndOpacity(FColor::Black)
+			//]
 			+ SOverlay::Slot()
 			.HAlign(HAlign_Fill)
 			.VAlign(VAlign_Fill)

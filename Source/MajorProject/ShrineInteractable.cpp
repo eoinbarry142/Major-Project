@@ -3,6 +3,7 @@
 
 #include "ShrineInteractable.h"
 //#include "MajorProjectCharacter.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 AShrineInteractable::AShrineInteractable()
@@ -62,6 +63,8 @@ void AShrineInteractable::InteractWithMe()
 		//UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
 		//ShrineMesh->SetMaterial(0, DynamicMaterial);
 		//DynamicMaterial->SetScalarParameterValue(TEXT("Runes"), 1);
+
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), shrineActivateSound, GetActorLocation(), 0.4f, 1.0f, 0.0f);
 
 		Material = ShrineMesh->GetMaterial(0);
 		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
