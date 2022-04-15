@@ -66,7 +66,7 @@ private:
 	//UPROPERTY(EditAnywhere, Category = "Materials")
 	//UMaterialInterface* MaterialTwo;
 
-	UMaterialInterface* Material;
+	//UMaterialInterface* Material;
 
 	float temp = 0.01f;
 
@@ -75,7 +75,7 @@ private:
 	UFUNCTION()
 	void OnTimerEnd();
 
-	UPROPERTY(EditAnywhere, Category = LightSwitch)
+	UPROPERTY(EditAnywhere, Category = ShrineSound)
 		USoundBase* shrineActivateSound;
 
 	//UPROPERTY(EditAnywhere, Category = "Materials")

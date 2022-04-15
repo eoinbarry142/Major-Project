@@ -37,7 +37,7 @@ private:
 	float GridHeight;
 	float RoomLength;
 	float RoomWidth;
-	float TraceDistance = 10000.0f;
+	float TraceDistance;
 
 	FVector TopLeft;
 	FVector BottomRight;

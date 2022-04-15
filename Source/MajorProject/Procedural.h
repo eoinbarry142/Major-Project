@@ -33,7 +33,7 @@ private:
 	TSubclassOf<AActor> CubeClass;
 
 	//Function to spawn blueprint actors into the world
-	void SpawnObject(UClass* ObjectToSpawn);
+	//void SpawnObject(UClass* ObjectToSpawn);
 
 	//Grid variables
 	float SquareWidth;

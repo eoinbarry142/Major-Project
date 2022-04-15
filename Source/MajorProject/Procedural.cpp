@@ -32,7 +32,7 @@ void AProcedural::BeginPlay()
 	Super::BeginPlay();
 	
 	//Call function to spawn object and pass in cube blueprint
-	SpawnObject(CubeClass);
+	//SpawnObject(CubeClass);
 
 	CreateGrid();
 
@@ -47,20 +47,20 @@ void AProcedural::Tick(float DeltaTime)
 }
 
 //Function to spawn blueprint actors into the world
-void AProcedural::SpawnObject(UClass * ObjectToSpawn)
-{
-	//Generate random floats within specified range
-	float XCoordinate = FMath::FRandRange(-500.f, 500.f);
-	float YCoordinate = FMath::FRandRange(-500.f, 500.f);
-	float Yaw = FMath::FRandRange(0.f, 360.f);
-
-	//Create FVector using randomised X and Y coordinates
-	FVector Location(XCoordinate, YCoordinate, 0.f);
-	//Create Rotator using randomised yaw
-	FRotator Rotation(0.f, Yaw, 0.f);
-
-	GetWorld()->SpawnActor<AActor>(ObjectToSpawn, Location, Rotation);
-}
+//void AProcedural::SpawnObject(UClass * ObjectToSpawn)
+//{
+//	//Generate random floats within specified range
+//	float XCoordinate = FMath::FRandRange(-500.f, 500.f);
+//	float YCoordinate = FMath::FRandRange(-500.f, 500.f);
+//	float Yaw = FMath::FRandRange(0.f, 360.f);
+//
+//	//Create FVector using randomised X and Y coordinates
+//	FVector Location(XCoordinate, YCoordinate, 0.f);
+//	//Create Rotator using randomised yaw
+//	FRotator Rotation(0.f, Yaw, 0.f);
+//
+//	GetWorld()->SpawnActor<AActor>(ObjectToSpawn, Location, Rotation);
+//}
 
 void AProcedural::CreateGrid()
 {
@@ -101,7 +101,12 @@ void AProcedural::PlacePointsOnGrid()
 			FVector RandomPointInSquare = GetRandomPointInSquare(UpperLeft, LowerRight);
 
 			//DrawDebugPoint(GetWorld(), RandomPointInSquare, 5.f, FColor::Red, true);
-			DrawDebugCircle(GetWorld(), RandomPointInSquare, 25.f, 48, FColor::Red, -1.f, 0, 2.f, false, FVector(0.f, 1.f, 0.f), FVector(1.f, 0.f, 0.f), true);
+			//DrawDebugCircle(GetWorld(), RandomPointInSquare, 25.f, 48, FColor::Red, -1.f, 0, 2.f, false, FVector(0.f, 1.f, 0.f), FVector(1.f, 0.f, 0.f), true);
+
+			float RandomYaw = FMath::FRandRange(0.f, 360.f);
+			FRotator RandomRotation(0.f, RandomYaw, 0.f);
+
+			GetWorld()->SpawnActor<AActor>(CubeClass, RandomPointInSquare, RandomRotation);
 		}
 	}
 }

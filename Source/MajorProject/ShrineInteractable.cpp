@@ -66,12 +66,14 @@ void AShrineInteractable::InteractWithMe()
 
 		UGameplayStatics::PlaySoundAtLocation(GetWorld(), shrineActivateSound, GetActorLocation(), 0.4f, 1.0f, 0.0f);
 
-		Material = ShrineMesh->GetMaterial(0);
-		UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
-		ShrineMesh->SetMaterial(0, DynamicMaterial);
+		//Material = ShrineMesh->GetMaterial(0);
+		//UMaterialInstanceDynamic* DynamicMaterial = UMaterialInstanceDynamic::Create(Material, this);
+		//ShrineMesh->SetMaterial(0, DynamicMaterial);
+
 		//DynamicMaterial->SetScalarParameterValue(TEXT("Runes"), temp);
 		//temp += 0.01f;
-		GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AShrineInteractable::OnTimerEnd, 0.01f, false);
+		//GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AShrineInteractable::OnTimerEnd, 0.01f, false);
+		OnTimerEnd();
 		
 		//GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle3, this, &AShrineInteractable::onTimerEnd, 1.f, false);
 		//GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle4, this, &AShrineInteractable::onTimerEnd, 1.f, false);

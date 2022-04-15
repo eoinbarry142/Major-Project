@@ -14,15 +14,16 @@ AProceduralFloor::AProceduralFloor()
 
 	GridSizeX = 2;
 	GridSizeY = 2;
-	SquareWidth = 15000.f;
+	SquareWidth = 5000.f;
 
 	TopLeft = FVector(0.f);
 	BottomRight = FVector(1000.f, 1000.f, 0.f);
 	GridHeight = 1.f;
-	RoomLength = 1000.f;
-	RoomWidth = 1000.f;
-
+	RoomLength = 10000.f;
+	RoomWidth = 10000.f;
 	Radius = 25.f;
+
+	TraceDistance = 10000.0f;
 }
 
 // Called when the game starts or when spawned
@@ -61,14 +62,14 @@ void AProceduralFloor::CreateGrid()
 	{
 		FVector Start = TopLeft + FVector(i * SquareWidth, 0.f, GridHeight);
 		FVector End = Start + FVector(0.f, RoomLength, GridHeight);
-		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 
 	for (int32 i = 0; i < GridSizeX + 1; i++)
 	{
 		FVector Start = TopLeft + FVector(0.f, i * SquareWidth, GridHeight);
 		FVector End = Start + FVector(RoomWidth, 0.f, GridHeight);
-		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 }
 
@@ -88,9 +89,9 @@ void AProceduralFloor::PlacePointsOnGrid()
 		{
 			FVector UpperLeft(i * SquareWidth + Radius, j * SquareWidth + Radius, GridHeight);
 			FVector LowerRight(i * SquareWidth + SquareWidth - Radius, j * SquareWidth + SquareWidth - Radius, GridHeight);
-			FVector RandomPointInSquare = GetRandomPointInSquare(UpperLeft, LowerRight);
-
-			//Raycast down from the random point to the ground
+			
+			//Raycast down from random point in square to the ground
+			//Raycast start and end points
 			FVector Start = GetRandomPointInSquare(UpperLeft, LowerRight);
 			FVector End = ((-GetActorUpVector() * TraceDistance) + Start);
 
