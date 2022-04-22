@@ -15,15 +15,16 @@ AProcedural::AProcedural()
 	SetRootComponent(Floor);
 
 	//Assign default values to variables
-	SquareWidth = 500.f;
+	SquareWidth = 2000.f;
 	GridHeight = 1.f;
 	RoomLength = 1000.f;
 	RoomWidth = 1000.f;
 	Radius = 25.f;
-	GridSizeX = 2;
-	GridSizeY = 2;
+	GridSizeX = 5;
+	GridSizeY = 5;
 	TopLeft = FVector(0.f);
 	BottomRight = FVector(1000.f, 1000.f, 0.f);
+	TraceDistance = 100000.0f;
 }
 
 // Called when the game starts or when spawned
@@ -98,15 +99,33 @@ void AProcedural::PlacePointsOnGrid()
 			FVector UpperLeft(i * SquareWidth + Radius, j * SquareWidth + Radius, GridHeight);
 			FVector LowerRight(i * SquareWidth + SquareWidth - Radius, j * SquareWidth + SquareWidth - Radius, GridHeight);
 
-			FVector RandomPointInSquare = GetRandomPointInSquare(UpperLeft, LowerRight);
+			FVector Start = GetRandomPointInSquare(UpperLeft, LowerRight);
+			FVector End = ((-GetActorUpVector() * TraceDistance) + Start);
+
+			FHitResult Hit;
+			FCollisionQueryParams TraceParams;
+			bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, TraceParams);
+
+			//FVector RandomPointInSquare = GetRandomPointInSquare(UpperLeft, LowerRight);
 
 			//DrawDebugPoint(GetWorld(), RandomPointInSquare, 5.f, FColor::Red, true);
 			//DrawDebugCircle(GetWorld(), RandomPointInSquare, 25.f, 48, FColor::Red, -1.f, 0, 2.f, false, FVector(0.f, 1.f, 0.f), FVector(1.f, 0.f, 0.f), true);
 
-			float RandomYaw = FMath::FRandRange(0.f, 360.f);
-			FRotator RandomRotation(0.f, RandomYaw, 0.f);
+			//float RandomYaw = FMath::FRandRange(0.f, 360.f);
+			//FRotator RandomRotation(0.f, RandomYaw, 0.f);
 
-			GetWorld()->SpawnActor<AActor>(CubeClass, RandomPointInSquare, RandomRotation);
+			//GetWorld()->SpawnActor<AActor>(CubeClass, RandomPointInSquare, RandomRotation);
+
+			if (bHit)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
+				FVector impact = Hit.ImpactPoint;
+
+				float Random1 = FMath::FRandRange(0.f, 360.f);
+				float Random2 = FMath::FRandRange(0.f, 360.f);
+				float Random3 = FMath::FRandRange(0.f, 360.f);
+				GetWorld()->SpawnActor<AActor>(RockClass, impact, FRotator(Random1, Random2, Random3));
+			}
 		}
 	}
 }
