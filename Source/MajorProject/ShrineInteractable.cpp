@@ -28,7 +28,6 @@ AShrineInteractable::AShrineInteractable()
 	//MaterialTwo = CreateDefaultSubobject<UMaterialInterface>("MaterialTwo");
 }
 
-
 // Called when the game starts or when spawned
 void AShrineInteractable::BeginPlay()
 {
@@ -38,6 +37,7 @@ void AShrineInteractable::BeginPlay()
 	//InteractionWidget->SetOpacityFromTexture(1);
 	InteractionWidget->SetVisibility(false);
 	//ShrineMesh->SetMaterial(0, MaterialTwo);
+	ShrineMesh->SetScalarParameterValueOnMaterials(TEXT("Runes"), 0.f);
 }
 
 // Called every frame
@@ -116,4 +116,9 @@ void AShrineInteractable::OnTimerEnd()
 
 	if (temp < 1.0f)
 		GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AShrineInteractable::OnTimerEnd, 0.01f, false);
+
+	LevelName = GetWorld()->GetMapName();
+	LevelName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+	if (LevelName == "MainMenu" && temp > 0.98f)
+		UGameplayStatics::OpenLevel(GetWorld(), FName("Island"));
 }

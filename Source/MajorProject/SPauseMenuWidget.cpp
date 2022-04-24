@@ -1,15 +1,14 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "SMainMenuWidget.h"
+#include "SPauseMenuWidget.h"
 #include "MenuHUD.h"
 #include "GameFramework/PlayerController.h"
 #include "MenuPlayerController.h"
-#include "ShrineInteractable.h"
 
 #define LOCTEXT_NAMESPACE "MainMenu"
 
-void SMainMenuWidget::Construct(const FArguments & InArgs)
+void SPauseMenuWidget::Construct(const FArguments & InArgs)
 {
 	bCanSupportFocus = true;
 	
@@ -18,7 +17,7 @@ void SMainMenuWidget::Construct(const FArguments & InArgs)
 	const FMargin ContentPadding = FMargin(500.f, 300.f);
 	const FMargin ButtonPadding = FMargin(10.f);
 
-	const FText TitleText = LOCTEXT("GameTitle", "MANA");
+	const FText TitleText = LOCTEXT("GameTitle", "PAUSED");
 	const FText PlayText = LOCTEXT("PlayGame", "Play");
 	const FText SettingsText = LOCTEXT("Settings", "Settings");
 	const FText QuitText = LOCTEXT("QuitGame", "Quit");
@@ -59,7 +58,7 @@ void SMainMenuWidget::Construct(const FArguments & InArgs)
 				.Padding(ButtonPadding)
 				[
 					SNew(SButton)
-					.OnClicked(this, &SMainMenuWidget::OnPlayClicked)
+					.OnClicked(this, &SPauseMenuWidget::OnPlayClicked)
 					[
 						SNew(STextBlock)
 						.Font(ButtonTextStyle)
@@ -86,7 +85,7 @@ void SMainMenuWidget::Construct(const FArguments & InArgs)
 				.Padding(ButtonPadding)
 				[
 					SNew(SButton)
-					.OnClicked(this, &SMainMenuWidget::OnQuitClicked)
+					.OnClicked(this, &SPauseMenuWidget::OnQuitClicked)
 					[
 						SNew(STextBlock)
 						.Font(ButtonTextStyle)
@@ -99,21 +98,11 @@ void SMainMenuWidget::Construct(const FArguments & InArgs)
 
 }
 
-FReply SMainMenuWidget::OnPlayClicked() const
+FReply SPauseMenuWidget::OnPlayClicked() const
 {
 	if (OwningHUD.IsValid())
 	{
-		OwningHUD->RemoveMenu();
-
-		for (TObjectIterator<AShrineInteractable> Itr; Itr; ++Itr)
-		{
-			if (Itr->IsA(AShrineInteractable::StaticClass()))
-			{
-				AShrineInteractable* actorClass1 = *Itr;
-				actorClass1->InteractWithMe();
-			}
-		}
-
+		OwningHUD->RemovePauseMenu();
 		//for (TObjectIterator<AMenuPlayerController> Itr; Itr; ++Itr)
 		//{
 		//	if (Itr->IsA(AMenuPlayerController::StaticClass()))
@@ -127,7 +116,7 @@ FReply SMainMenuWidget::OnPlayClicked() const
 	return FReply::Handled();
 }
 
-FReply SMainMenuWidget::OnQuitClicked() const
+FReply SPauseMenuWidget::OnQuitClicked() const
 {
 	if (OwningHUD.IsValid())
 	{

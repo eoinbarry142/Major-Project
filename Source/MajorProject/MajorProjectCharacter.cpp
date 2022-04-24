@@ -10,6 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "ShrineInteractable.h"
 #include "MenuHUD.h"
+#include <Kismet/GameplayStatics.h>
 #include <string> 
 
 //////////////////////////////////////////////////////////////////////////
@@ -190,11 +191,7 @@ void AMajorProjectCharacter::ShrineCountIncrement()
 
 	if (shrineCount == 4)
 	{
-		if (GEngine)
-			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("YOU WIN"));
-
-		AMenuHUD* actorClass = GetWorld()->SpawnActor<AMenuHUD>();
-		actorClass->ShowMenu();
+		UGameplayStatics::OpenLevel(GetWorld(), FName("NewMap"));
 	}
 }
 

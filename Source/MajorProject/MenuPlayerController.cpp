@@ -23,7 +23,7 @@ void AMenuPlayerController::OpenMenu()
 {
 	if (AMenuHUD* MenuHUD = Cast<AMenuHUD>(GetHUD()))
 	{
-		MenuHUD->ShowMenu();
+		MenuHUD->ShowPauseMenu();
 	}
 }
 

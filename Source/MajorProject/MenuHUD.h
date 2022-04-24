@@ -19,11 +19,18 @@ protected:
 	TSharedPtr<class SMainMenuWidget> MenuWidget;
 	TSharedPtr<class SWidget> MenuWidgetContainer;
 
+	TSharedPtr<class SPauseMenuWidget> PauseMenuWidget;
+	TSharedPtr<class SWidget> PauseMenuWidgetContainer;
+
 	virtual void BeginPlay() override;
+
+	FString LevelName;
 
 public:
 
 	void ShowMenu();
+	void ShowPauseMenu();
 	void RemoveMenu();
+	void RemovePauseMenu();
 	
 };

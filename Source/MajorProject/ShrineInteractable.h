@@ -37,12 +37,15 @@ public:
 	//IInteractionInterface* Interface = nullptr;
 
 protected:
+
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 private:
 	UPROPERTY(EditAnywhere)
 	USceneComponent* _RootComponent;
+
+	FString LevelName;
 
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* ShrineMesh;
