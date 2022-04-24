@@ -31,6 +31,10 @@ AShrineInteractable::AShrineInteractable()
 // Called when the game starts or when spawned
 void AShrineInteractable::BeginPlay()
 {
+	LevelName = GetWorld()->GetMapName();
+	LevelName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+	if (LevelName == "MainMenu")
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), MainMenuSound, GetActorLocation(), 0.4f, 1.0f, 0.0f);
 	Super::BeginPlay();
 	Light->SetIntensity(0);
 	activated = false;
@@ -120,5 +124,10 @@ void AShrineInteractable::OnTimerEnd()
 	LevelName = GetWorld()->GetMapName();
 	LevelName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
 	if (LevelName == "MainMenu" && temp > 0.98f)
-		UGameplayStatics::OpenLevel(GetWorld(), FName("Island"));
+		GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle2, this, &AShrineInteractable::NextLevel, 2.f, false);
+}
+
+void AShrineInteractable::NextLevel()
+{
+	UGameplayStatics::OpenLevel(GetWorld(), FName("Island"));
 }

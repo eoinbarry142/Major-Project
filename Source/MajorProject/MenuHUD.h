@@ -22,6 +22,9 @@ protected:
 	TSharedPtr<class SPauseMenuWidget> PauseMenuWidget;
 	TSharedPtr<class SWidget> PauseMenuWidgetContainer;
 
+	TSharedPtr<class SWinMenuWidget> WinMenuWidget;
+	TSharedPtr<class SWidget> WinMenuWidgetContainer;
+
 	virtual void BeginPlay() override;
 
 	FString LevelName;
@@ -29,8 +32,10 @@ protected:
 public:
 
 	void ShowMenu();
-	void ShowPauseMenu();
+	//void ShowPauseMenu();
+	void ShowWinMenu();
 	void RemoveMenu();
 	void RemovePauseMenu();
+	void RemoveWinMenu();
 	
 };

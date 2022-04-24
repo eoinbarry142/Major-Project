@@ -10,6 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "ShrineInteractable.h"
 #include "MenuHUD.h"
+#include "Blueprint/UserWidget.h"
 #include <Kismet/GameplayStatics.h>
 #include <string> 
 
@@ -103,6 +104,12 @@ void AMajorProjectCharacter::OnResetVR()
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
 
+//void AMajorProjectCharacter::BeginPlay()
+//{
+//	if (GEngine)
+//		GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("BeginPlay"));
+//}
+
 void AMajorProjectCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		Jump();
@@ -191,8 +198,19 @@ void AMajorProjectCharacter::ShrineCountIncrement()
 
 	if (shrineCount == 4)
 	{
-		UGameplayStatics::OpenLevel(GetWorld(), FName("NewMap"));
+		GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AMajorProjectCharacter::WinScreen, 3.5f, false);
 	}
+}
+
+void AMajorProjectCharacter::WinScreen()
+{
+	UGameplayStatics::OpenLevel(GetWorld(), FName("WinMenu"));
+}
+
+void AMajorProjectCharacter::Settings()
+{
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("called"));
 }
 
 

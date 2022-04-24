@@ -34,6 +34,8 @@ public:
 
 protected:
 
+	//virtual void BeginPlay() override;
+
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();
 
@@ -68,6 +70,11 @@ protected:
 
 	void OpenMenu();
 
+	FTimerHandle _loopTimerHandle;
+
+	UPROPERTY(EditAnywhere, Category = AmbientMusic)
+		USoundBase* Ambient;
+
 public:
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
@@ -83,6 +90,12 @@ public:
 
 	UFUNCTION()
 	void ShrineCountIncrement();
+
+	UFUNCTION()
+	void WinScreen();
+
+	UFUNCTION()
+	void Settings();
 
 	UPROPERTY(VisibleAnywhere)
 	int shrineCount = 0;

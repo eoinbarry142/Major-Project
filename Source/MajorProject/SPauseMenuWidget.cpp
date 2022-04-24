@@ -100,32 +100,32 @@ void SPauseMenuWidget::Construct(const FArguments & InArgs)
 
 FReply SPauseMenuWidget::OnPlayClicked() const
 {
-	if (OwningHUD.IsValid())
-	{
-		OwningHUD->RemovePauseMenu();
-		//for (TObjectIterator<AMenuPlayerController> Itr; Itr; ++Itr)
-		//{
-		//	if (Itr->IsA(AMenuPlayerController::StaticClass()))
-		//	{
-		//		AMenuPlayerController* actorClass = *Itr;
-		//		actorClass->IslandLevel();
-		//	}
-		//}
-	}
-	
+	//if (OwningHUD.IsValid())
+	//{
+	//	OwningHUD->RemovePauseMenu();
+	//	//for (TObjectIterator<AMenuPlayerController> Itr; Itr; ++Itr)
+	//	//{
+	//	//	if (Itr->IsA(AMenuPlayerController::StaticClass()))
+	//	//	{
+	//	//		AMenuPlayerController* actorClass = *Itr;
+	//	//		actorClass->IslandLevel();
+	//	//	}
+	//	//}
+	//}
+	//
 	return FReply::Handled();
 }
 
 FReply SPauseMenuWidget::OnQuitClicked() const
 {
-	if (OwningHUD.IsValid())
+	/*if (OwningHUD.IsValid())
 	{
 		if (APlayerController* PC = OwningHUD->PlayerOwner)
 		{
 			PC->ConsoleCommand("quit");
 		}
 	}
-
+*/
 	return FReply::Handled();
 }
 

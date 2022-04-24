@@ -19,12 +19,13 @@ protected:
 
 	AMenuPlayerController();
 
-	virtual void SetupInputComponent() override;
+	//virtual void SetupInputComponent() override;
 
-	void OpenMenu();
+	//void OpenMenu();
 
 public:
 
-	void IslandLevel();
+	//void IslandLevel();
+	//void FinalLevel();
 	
 };

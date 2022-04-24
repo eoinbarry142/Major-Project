@@ -9,7 +9,7 @@ AMenuPlayerController::AMenuPlayerController()
 
 }
 
-void AMenuPlayerController::SetupInputComponent()
+/*void AMenuPlayerController::SetupInputComponent()
 {
 	Super::SetupInputComponent();
 
@@ -17,18 +17,24 @@ void AMenuPlayerController::SetupInputComponent()
 	{
 		InputComponent->BindAction("OpenMenu", IE_Pressed, this, &AMenuPlayerController::OpenMenu);
 	}
-}
+}*/
 
-void AMenuPlayerController::OpenMenu()
-{
-	if (AMenuHUD* MenuHUD = Cast<AMenuHUD>(GetHUD()))
-	{
-		MenuHUD->ShowPauseMenu();
-	}
-}
+//void AMenuPlayerController::OpenMenu()
+//{
+//	if (AMenuHUD* MenuHUD = Cast<AMenuHUD>(GetHUD()))
+//	{
+//		MenuHUD->ShowPauseMenu();
+//	}
+//}
 
-void AMenuPlayerController::IslandLevel()
-{
-	FString current = GetWorld()->GetMapName();
-	UGameplayStatics::OpenLevel(GetWorld(), FName("Island"));
-}
+//void AMenuPlayerController::IslandLevel()
+//{
+//	FString current = GetWorld()->GetMapName();
+//	UGameplayStatics::OpenLevel(GetWorld(), FName("Island"));
+//}
+//
+//void AMenuPlayerController::FinalLevel()
+//{
+//	FString current = GetWorld()->GetMapName();
+//	UGameplayStatics::OpenLevel(GetWorld(), FName("NewMap"));
+//}

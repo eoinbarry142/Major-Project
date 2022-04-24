@@ -29,6 +29,8 @@ public:
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable, category = "InteractWithMe")
 	virtual void InteractWithMe() override;
 
 	virtual void ShowInteractionWidget() override;
@@ -74,12 +76,19 @@ private:
 	float temp = 0.01f;
 
 	FTimerHandle _loopTimerHandle;
+	FTimerHandle _loopTimerHandle2;
 
 	UFUNCTION()
 	void OnTimerEnd();
 
+	UFUNCTION()
+	void NextLevel();
+
 	UPROPERTY(EditAnywhere, Category = ShrineSound)
 		USoundBase* shrineActivateSound;
+
+	UPROPERTY(EditAnywhere, Category = MenuSound)
+		USoundBase* MainMenuSound;
 
 	//UPROPERTY(EditAnywhere, Category = "Materials")
 	//bool bChooseOne = true;

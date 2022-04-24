@@ -6,6 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "MenuPlayerController.h"
 #include "ShrineInteractable.h"
+#include "MajorProjectCharacter.h"
 
 #define LOCTEXT_NAMESPACE "MainMenu"
 
@@ -73,6 +74,7 @@ void SMainMenuWidget::Construct(const FArguments & InArgs)
 				.Padding(ButtonPadding)
 				[
 					SNew(SButton)
+					.OnClicked(this, &SMainMenuWidget::OnSettingsClicked)
 					[
 						SNew(STextBlock)
 						.Font(ButtonTextStyle)
@@ -101,41 +103,60 @@ void SMainMenuWidget::Construct(const FArguments & InArgs)
 
 FReply SMainMenuWidget::OnPlayClicked() const
 {
-	if (OwningHUD.IsValid())
+	//if (OwningHUD.IsValid())
+	//{
+	//	OwningHUD->RemoveMenu();
+
+	//	for (TObjectIterator<AShrineInteractable> Itr; Itr; ++Itr)
+	//	{
+	//		if (Itr->IsA(AShrineInteractable::StaticClass()))
+	//		{
+	//			AShrineInteractable* actorClass1 = *Itr;
+	//			actorClass1->InteractWithMe();
+	//		}
+	//	}
+
+	//	//for (TObjectIterator<AMenuPlayerController> Itr; Itr; ++Itr)
+	//	//{
+	//	//	if (Itr->IsA(AMenuPlayerController::StaticClass()))
+	//	//	{
+	//	//		AMenuPlayerController* actorClass = *Itr;
+	//	//		actorClass->IslandLevel();
+	//	//	}
+	//	//}
+	//}
+	
+	return FReply::Handled();
+}
+
+FReply SMainMenuWidget::OnSettingsClicked() const
+{
+	/*if (OwningHUD.IsValid())
 	{
 		OwningHUD->RemoveMenu();
 
-		for (TObjectIterator<AShrineInteractable> Itr; Itr; ++Itr)
+		for (TObjectIterator<AMajorProjectCharacter> Itr; Itr; ++Itr)
 		{
-			if (Itr->IsA(AShrineInteractable::StaticClass()))
+			if (Itr->IsA(AMajorProjectCharacter::StaticClass()))
 			{
-				AShrineInteractable* actorClass1 = *Itr;
-				actorClass1->InteractWithMe();
+				AMajorProjectCharacter* actorClass1 = *Itr;
+				actorClass1->Settings();
 			}
 		}
+	}*/
 
-		//for (TObjectIterator<AMenuPlayerController> Itr; Itr; ++Itr)
-		//{
-		//	if (Itr->IsA(AMenuPlayerController::StaticClass()))
-		//	{
-		//		AMenuPlayerController* actorClass = *Itr;
-		//		actorClass->IslandLevel();
-		//	}
-		//}
-	}
-	
 	return FReply::Handled();
 }
 
 FReply SMainMenuWidget::OnQuitClicked() const
 {
-	if (OwningHUD.IsValid())
+	/*if (OwningHUD.IsValid())
 	{
 		if (APlayerController* PC = OwningHUD->PlayerOwner)
 		{
 			PC->ConsoleCommand("quit");
 		}
-	}
+	}*/
 
 	return FReply::Handled();
 }
