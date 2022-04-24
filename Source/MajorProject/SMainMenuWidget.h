@@ -26,4 +26,8 @@ public:
 	TWeakObjectPtr<class AMenuHUD> OwningHUD;
 
 	virtual bool SupportsKeyboardFocus() const override { return true; }
+
+protected:
+	UPROPERTY(EditAnywhere)
+	FName LevelToLoad;
 };

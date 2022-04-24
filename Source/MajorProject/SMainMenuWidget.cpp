@@ -4,6 +4,7 @@
 #include "SMainMenuWidget.h"
 #include "MenuHUD.h"
 #include "GameFramework/PlayerController.h"
+#include "MenuPlayerController.h"
 
 #define LOCTEXT_NAMESPACE "MainMenu"
 
@@ -102,6 +103,14 @@ FReply SMainMenuWidget::OnPlayClicked() const
 	if (OwningHUD.IsValid())
 	{
 		OwningHUD->RemoveMenu();
+		for (TObjectIterator<AMenuPlayerController> Itr; Itr; ++Itr)
+		{
+			if (Itr->IsA(AMenuPlayerController::StaticClass()))
+			{
+				AMenuPlayerController* actorClass = *Itr;
+				actorClass->IslandLevel();
+			}
+		}
 	}
 	
 	return FReply::Handled();

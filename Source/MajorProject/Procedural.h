@@ -30,7 +30,15 @@ private:
 
 	//Create variable to reference cube/shrine blueprint
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
-	TSubclassOf<AActor> RockClass;
+	TSubclassOf<AActor> RockClass1;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
+		TSubclassOf<AActor> RockClass2;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
+		TSubclassOf<AActor> TreeClass1;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
+		TSubclassOf<AActor> TreeClass2;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
+		TSubclassOf<AActor> RockClass5;
 
 	//Function to spawn blueprint actors into the world
 	//void SpawnObject(UClass* ObjectToSpawn);

@@ -15,13 +15,13 @@ AProcedural::AProcedural()
 	SetRootComponent(Floor);
 
 	//Assign default values to variables
-	SquareWidth = 2000.f;
+	SquareWidth = 1500.f;
 	GridHeight = 1.f;
 	RoomLength = 1000.f;
 	RoomWidth = 1000.f;
 	Radius = 25.f;
-	GridSizeX = 5;
-	GridSizeY = 5;
+	GridSizeX = 14;
+	GridSizeY = 14;
 	TopLeft = FVector(0.f);
 	BottomRight = FVector(1000.f, 1000.f, 0.f);
 	TraceDistance = 100000.0f;
@@ -70,14 +70,14 @@ void AProcedural::CreateGrid()
 	{
 		FVector Start = TopLeft + FVector(i * SquareWidth, 0.f, GridHeight);
 		FVector End = Start + FVector(0.f, RoomLength, GridHeight);
-		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 	//Vertical lines
 	for (int32 i = 0; i < GridSizeX + 1; i++)
 	{
 		FVector Start = TopLeft + FVector(0.f, i * SquareWidth, GridHeight);
 		FVector End = Start + FVector(RoomWidth, 0.f, GridHeight);
-		DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
+		//DrawDebugLine(GetWorld(), Start, End, FColor::Blue, true);
 	}
 }
 
@@ -124,7 +124,19 @@ void AProcedural::PlacePointsOnGrid()
 				float Random1 = FMath::FRandRange(0.f, 360.f);
 				float Random2 = FMath::FRandRange(0.f, 360.f);
 				float Random3 = FMath::FRandRange(0.f, 360.f);
-				GetWorld()->SpawnActor<AActor>(RockClass, impact, FRotator(Random1, Random2, Random3));
+
+				int tempRandom = FMath::FRandRange(1, 5);
+
+				if (tempRandom == 1)
+					GetWorld()->SpawnActor<AActor>(RockClass1, impact, FRotator(Random1, Random2, Random3));
+				else if (tempRandom == 2)
+					GetWorld()->SpawnActor<AActor>(RockClass2, impact, FRotator(Random1, Random2, Random3));
+				else if (tempRandom == 3)
+					GetWorld()->SpawnActor<AActor>(TreeClass1, impact, FRotator(0.f, Random2, 0.f));
+				else if (tempRandom == 4)
+					GetWorld()->SpawnActor<AActor>(TreeClass2, impact, FRotator(0.f, Random2, 0.f));
+				else if (tempRandom == 5)
+					GetWorld()->SpawnActor<AActor>(RockClass5, impact, FRotator(Random1, Random2, Random3));
 			}
 		}
 	}

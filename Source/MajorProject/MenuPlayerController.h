@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Kismet/GameplayStatics.h"
 #include "MenuPlayerController.generated.h"
 
 /**
@@ -21,5 +22,9 @@ protected:
 	virtual void SetupInputComponent() override;
 
 	void OpenMenu();
+
+public:
+
+	void IslandLevel();
 	
 };

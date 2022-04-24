@@ -26,3 +26,9 @@ void AMenuPlayerController::OpenMenu()
 		MenuHUD->ShowMenu();
 	}
 }
+
+void AMenuPlayerController::IslandLevel()
+{
+	FString current = GetWorld()->GetMapName();
+	UGameplayStatics::OpenLevel(GetWorld(), FName("Island"));
+}
