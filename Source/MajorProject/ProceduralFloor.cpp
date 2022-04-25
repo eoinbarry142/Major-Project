@@ -106,32 +106,36 @@ void AProceduralFloor::PlacePointsOnGrid()
 				bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, TraceParams);
 				//DrawDebugLine(GetWorld(), Start, End, FColor::Orange, false, 10.0f);
 
-				if (bHit)
+				if (bHit && Hit.GetActor()->GetName() == "Landscape_0")
 				{
-					//Get hit surface type		
-					//const EPhysicalSurface SurfaceType = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
+					const EPhysicalSurface SurfaceType = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
+					const FName SurfaceName = *StaticEnum<EPhysicalSurface>()->GetAuthoredNameStringByValue(SurfaceType);
 
-					//const FName SurfaceName = *StaticEnum<EPhysicalSurface>()->GetAuthoredNameStringByValue(SurfaceType);
-
-					//if (SurfaceName.ToString() == "Grass")
-					//{
-
-					//}
-
-					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
-
-					if (Hit.GetActor()->GetName() == "Landscape_0")
+					if (SurfaceName.ToString() == "SurfaceType_Default")
 					{
-						FVector impact = Hit.ImpactPoint;
-
-						float RandomYaw = FMath::FRandRange(0.f, 360.f);
-						GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
-
-						temp += 1;
+						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("SurfaceType_Default")));
+					}
+					else if (SurfaceName.ToString() == "SurfaceType1")
+					{
+						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Grass")));
+					}
+					else if (SurfaceName.ToString() == "SurfaceType2")
+					{
+						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Sand")));
+					}
+					else if (SurfaceName.ToString() == "SurfaceType3")
+					{
+						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Water")));
 					}
 
-					
+					//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
 
+					FVector impact = Hit.ImpactPoint;
+
+					float RandomYaw = FMath::FRandRange(0.f, 360.f);
+					GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
+
+					temp += 1;
 				}
 
 				//DrawDebugPoint(GetWorld(), RandomPointInSquare, 5.f, FColor::Red, true);

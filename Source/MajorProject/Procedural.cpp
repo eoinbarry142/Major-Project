@@ -3,6 +3,7 @@
 
 #include "Procedural.h"
 #include "DrawDebugHelpers.h"
+#include "PhysicalMaterials/PhysicalMaterial.h"
 
 // Sets default values
 AProcedural::AProcedural()
@@ -15,7 +16,7 @@ AProcedural::AProcedural()
 	SetRootComponent(Floor);
 
 	//Assign default values to variables
-	SquareWidth = 1500.f;
+	SquareWidth = 1600.f;
 	GridHeight = 1.f;
 	RoomLength = 1000.f;
 	RoomWidth = 1000.f;
@@ -104,6 +105,7 @@ void AProcedural::PlacePointsOnGrid()
 
 			FHitResult Hit;
 			FCollisionQueryParams TraceParams;
+			TraceParams.bReturnPhysicalMaterial = true;
 			bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, TraceParams);
 
 			//FVector RandomPointInSquare = GetRandomPointInSquare(UpperLeft, LowerRight);
@@ -118,6 +120,26 @@ void AProcedural::PlacePointsOnGrid()
 
 			if (bHit)
 			{
+				const EPhysicalSurface SurfaceType = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
+				const FName SurfaceName = *StaticEnum<EPhysicalSurface>()->GetAuthoredNameStringByValue(SurfaceType);
+
+				if (SurfaceName.ToString() == "SurfaceType_Default")
+				{
+					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("SurfaceType_Default")));
+				}
+				else if (SurfaceName.ToString() == "SurfaceType1")
+				{
+					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Grass")));
+				}
+				else if (SurfaceName.ToString() == "SurfaceType2")
+				{
+					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Sand")));
+				}
+				else if (SurfaceName.ToString() == "SurfaceType3")
+				{
+					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Water")));
+				}
+				
 				//GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
 				FVector impact = Hit.ImpactPoint;
 
