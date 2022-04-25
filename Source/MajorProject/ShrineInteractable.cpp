@@ -55,8 +55,8 @@ void AShrineInteractable::InteractWithMe()
 {
 
 	if (activated == false) {
-		if (GEngine)
-			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted"));
+		//if (GEngine)
+		//	GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Interacted"));
 		//Light->SetIntensity(10000);
 		activated = true;
 		InteractionWidget->SetVisibility(false);

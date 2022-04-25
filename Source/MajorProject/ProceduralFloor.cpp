@@ -2,6 +2,9 @@
 
 #include "ProceduralFloor.h"
 #include "DrawDebugHelpers.h"
+#include "Components/StaticMeshComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "PhysicalMaterials/PhysicalMaterial.h"
 
 // Sets default values
 AProceduralFloor::AProceduralFloor()
@@ -87,33 +90,55 @@ void AProceduralFloor::PlacePointsOnGrid()
 	{
 		for (int32 j = 0; j < GridSizeY; j++)
 		{
-			FVector UpperLeft(i * SquareWidth + Radius, j * SquareWidth + Radius, GridHeight);
-			FVector LowerRight(i * SquareWidth + SquareWidth - Radius, j * SquareWidth + SquareWidth - Radius, GridHeight);
-			
-			//Raycast down from random point in square to the ground
-			//Raycast start and end points
-			FVector Start = GetRandomPointInSquare(UpperLeft, LowerRight);
-			FVector End = ((-GetActorUpVector() * TraceDistance) + Start);
-
-			FHitResult Hit;
-			FCollisionQueryParams TraceParams;
-			bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, TraceParams);
-			//DrawDebugLine(GetWorld(), Start, End, FColor::Orange, false, 10.0f);
-
-			if(bHit)
+			while (temp < 1)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
-				FVector impact = Hit.ImpactPoint;
+				FVector UpperLeft(i * SquareWidth + Radius, j * SquareWidth + Radius, GridHeight);
+				FVector LowerRight(i * SquareWidth + SquareWidth - Radius, j * SquareWidth + SquareWidth - Radius, GridHeight);
 
-				float RandomYaw = FMath::FRandRange(0.f, 360.f);
-				GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
+				//Raycast down from random point in square to the ground
+				//Raycast start and end points
+				FVector Start = GetRandomPointInSquare(UpperLeft, LowerRight);
+				FVector End = ((-GetActorUpVector() * TraceDistance) + Start);
+
+				FHitResult Hit;
+				FCollisionQueryParams TraceParams;
+				TraceParams.bReturnPhysicalMaterial = true;
+				bool bHit = GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, TraceParams);
+				//DrawDebugLine(GetWorld(), Start, End, FColor::Orange, false, 10.0f);
+
+				if (bHit)
+				{
+					//Get hit surface type		
+					//const EPhysicalSurface SurfaceType = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
+
+					//const FName SurfaceName = *StaticEnum<EPhysicalSurface>()->GetAuthoredNameStringByValue(SurfaceType);
+
+					//if (SurfaceName.ToString() == "Grass")
+					//{
+
+					//}
+
+					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
+
+					if (Hit.GetActor()->GetName() == "Landscape_0")
+					{
+						FVector impact = Hit.ImpactPoint;
+
+						float RandomYaw = FMath::FRandRange(0.f, 360.f);
+						GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
+
+						temp += 1;
+					}
+
+					
+
+				}
+
+				//DrawDebugPoint(GetWorld(), RandomPointInSquare, 5.f, FColor::Red, true);
+
 			}
 
-			
-
-			
-
-			//DrawDebugPoint(GetWorld(), RandomPointInSquare, 5.f, FColor::Red, true);
+			temp = 0;
 
 		}
 	}

@@ -46,6 +46,8 @@ private:
 
 	float Radius;
 
+	int temp = 0;
+
 	void CreateGrid();
 
 	FVector GetRandomPointInSquare(const FVector& UpperLeft, const FVector& LowerRight);

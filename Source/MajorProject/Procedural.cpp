@@ -118,7 +118,7 @@ void AProcedural::PlacePointsOnGrid()
 
 			if (bHit)
 			{
-				GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
+				//GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
 				FVector impact = Hit.ImpactPoint;
 
 				float Random1 = FMath::FRandRange(0.f, 360.f);
