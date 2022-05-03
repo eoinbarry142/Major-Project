@@ -21,8 +21,8 @@ AProcedural::AProcedural()
 	RoomLength = 1000.f;
 	RoomWidth = 1000.f;
 	Radius = 25.f;
-	GridSizeX = 14;
-	GridSizeY = 14;
+	GridSizeX = 20;
+	GridSizeY = 20;
 	TopLeft = FVector(0.f);
 	BottomRight = FVector(1000.f, 1000.f, 0.f);
 	TraceDistance = 100000.0f;
@@ -32,9 +32,6 @@ AProcedural::AProcedural()
 void AProcedural::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	//Call function to spawn object and pass in cube blueprint
-	//SpawnObject(CubeClass);
 
 	CreateGrid();
 
@@ -47,22 +44,6 @@ void AProcedural::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
-
-//Function to spawn blueprint actors into the world
-//void AProcedural::SpawnObject(UClass * ObjectToSpawn)
-//{
-//	//Generate random floats within specified range
-//	float XCoordinate = FMath::FRandRange(-500.f, 500.f);
-//	float YCoordinate = FMath::FRandRange(-500.f, 500.f);
-//	float Yaw = FMath::FRandRange(0.f, 360.f);
-//
-//	//Create FVector using randomised X and Y coordinates
-//	FVector Location(XCoordinate, YCoordinate, 0.f);
-//	//Create Rotator using randomised yaw
-//	FRotator Rotation(0.f, Yaw, 0.f);
-//
-//	GetWorld()->SpawnActor<AActor>(ObjectToSpawn, Location, Rotation);
-//}
 
 void AProcedural::CreateGrid()
 {
@@ -118,47 +99,37 @@ void AProcedural::PlacePointsOnGrid()
 
 			//GetWorld()->SpawnActor<AActor>(CubeClass, RandomPointInSquare, RandomRotation);
 
-			if (bHit)
+			if (bHit && Hit.GetActor()->GetName() == "Landscape_0")
 			{
 				const EPhysicalSurface SurfaceType = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
 				const FName SurfaceName = *StaticEnum<EPhysicalSurface>()->GetAuthoredNameStringByValue(SurfaceType);
 
-				if (SurfaceName.ToString() == "SurfaceType_Default")
-				{
-					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("SurfaceType_Default")));
-				}
-				else if (SurfaceName.ToString() == "SurfaceType1")
-				{
-					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Grass")));
-				}
-				else if (SurfaceName.ToString() == "SurfaceType2")
-				{
-					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Sand")));
-				}
-				else if (SurfaceName.ToString() == "SurfaceType3")
-				{
-					GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Water")));
-				}
-				
-				//GEngine->AddOnScreenDebugMessage(-1, 1, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
 				FVector impact = Hit.ImpactPoint;
 
+				//Randomise rotation
 				float Random1 = FMath::FRandRange(0.f, 360.f);
 				float Random2 = FMath::FRandRange(0.f, 360.f);
 				float Random3 = FMath::FRandRange(0.f, 360.f);
 
-				int tempRandom = FMath::FRandRange(1, 5);
+				//Randomise actor placed depending on surface
+				int SurfaceNo;
 
-				if (tempRandom == 1)
-					GetWorld()->SpawnActor<AActor>(RockClass1, impact, FRotator(Random1, Random2, Random3));
-				else if (tempRandom == 2)
-					GetWorld()->SpawnActor<AActor>(RockClass2, impact, FRotator(Random1, Random2, Random3));
-				else if (tempRandom == 3)
-					GetWorld()->SpawnActor<AActor>(TreeClass1, impact, FRotator(0.f, Random2, 0.f));
-				else if (tempRandom == 4)
-					GetWorld()->SpawnActor<AActor>(TreeClass2, impact, FRotator(0.f, Random2, 0.f));
-				else if (tempRandom == 5)
-					GetWorld()->SpawnActor<AActor>(RockClass5, impact, FRotator(Random1, Random2, Random3));
+				//Grass
+				if (SurfaceName.ToString() == "SurfaceType1")
+				{
+					SurfaceNo = FMath::FRandRange(1, 5);
+
+					if (SurfaceNo == 1)
+						GetWorld()->SpawnActor<AActor>(RockClass1, impact, FRotator(Random1, Random2, Random3));
+					else if (SurfaceNo == 2)
+						GetWorld()->SpawnActor<AActor>(RockClass2, impact, FRotator(Random1, Random2, Random3));
+					else if (SurfaceNo == 3)
+						GetWorld()->SpawnActor<AActor>(RockClass3, impact, FRotator(Random1, Random2, Random3));
+					else if (SurfaceNo == 4)
+						GetWorld()->SpawnActor<AActor>(TreeClass1, impact, FRotator(0.f, Random2, 0.f));
+					else if (SurfaceNo == 5)
+						GetWorld()->SpawnActor<AActor>(TreeClass2, impact, FRotator(0.f, Random2, 0.f));
+				}
 			}
 		}
 	}

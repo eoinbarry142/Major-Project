@@ -17,7 +17,7 @@ AProceduralFloor::AProceduralFloor()
 
 	GridSizeX = 2;
 	GridSizeY = 2;
-	SquareWidth = 10000.f;
+	SquareWidth = 15000.f;
 
 	TopLeft = FVector(0.f);
 	BottomRight = FVector(100000.f, 0.f, 100000.f);
@@ -111,35 +111,37 @@ void AProceduralFloor::PlacePointsOnGrid()
 					const EPhysicalSurface SurfaceType = UPhysicalMaterial::DetermineSurfaceType(Hit.PhysMaterial.Get());
 					const FName SurfaceName = *StaticEnum<EPhysicalSurface>()->GetAuthoredNameStringByValue(SurfaceType);
 
+					FVector impact = Hit.ImpactPoint;
+
+					//Randomise yaw rotation
+					float RandomYaw = FMath::FRandRange(0.f, 360.f);
+
 					if (SurfaceName.ToString() == "SurfaceType_Default")
 					{
 						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("SurfaceType_Default")));
 					}
+					//Grass
 					else if (SurfaceName.ToString() == "SurfaceType1")
 					{
 						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Grass")));
+						GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
+						temp += 1;
 					}
+					//Sand
 					else if (SurfaceName.ToString() == "SurfaceType2")
 					{
 						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Sand")));
+						GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
+						temp += 1;
 					}
+					//Water
 					else if (SurfaceName.ToString() == "SurfaceType3")
 					{
 						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Water")));
 					}
-
 					//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
-
-					FVector impact = Hit.ImpactPoint;
-
-					float RandomYaw = FMath::FRandRange(0.f, 360.f);
-					GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
-
-					temp += 1;
 				}
-
 				//DrawDebugPoint(GetWorld(), RandomPointInSquare, 5.f, FColor::Red, true);
-
 			}
 
 			temp = 0;

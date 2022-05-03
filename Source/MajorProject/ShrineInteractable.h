@@ -8,6 +8,7 @@
 #include "Components/PointLightComponent.h"
 #include "Components/WidgetComponent.h"
 #include "MajorProjectCharacter.h"
+#include "GameFramework/PlayerController.h"
 
 #include "ShrineInteractable.generated.h"
 

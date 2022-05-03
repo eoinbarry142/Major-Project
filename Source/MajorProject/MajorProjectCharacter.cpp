@@ -12,6 +12,7 @@
 #include "MenuHUD.h"
 #include "Blueprint/UserWidget.h"
 #include <Kismet/GameplayStatics.h>
+#include "BoatClass.h"
 #include <string> 
 
 //////////////////////////////////////////////////////////////////////////
@@ -191,14 +192,26 @@ void AMajorProjectCharacter::OnBoxEndOverlap(UPrimitiveComponent * OverlappedCom
 
 void AMajorProjectCharacter::ShrineCountIncrement()
 {
-	//if (GEngine)
-	//	GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("called"));
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("called"));
 	shrineCount = shrineCount + 1;
 	//UE_LOG(LogTemp, Warning, TEXT("Text, %d"), shrineCount);
 
 	if (shrineCount == 4)
 	{
-		GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AMajorProjectCharacter::WinScreen, 3.5f, false);
+		//GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AMajorProjectCharacter::WinScreen, 3.5f, false);
+
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("4"));
+
+		for (TObjectIterator<ABoatClass> Itr; Itr; ++Itr)
+		{
+			if (Itr->IsA(ABoatClass::StaticClass()))
+			{
+				ABoatClass* actorClass = *Itr;
+				actorClass->Ready();
+			}
+		}
 	}
 }
 
