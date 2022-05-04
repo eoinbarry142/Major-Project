@@ -91,6 +91,9 @@ public:
 	UFUNCTION()
 	void ShrineCountIncrement();
 
+	UFUNCTION(BlueprintCallable, category = "ResetShrine")
+	void ResetShrineCount();
+
 	UFUNCTION()
 	void WinScreen();
 

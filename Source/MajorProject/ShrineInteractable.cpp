@@ -33,8 +33,8 @@ void AShrineInteractable::BeginPlay()
 {
 	LevelName = GetWorld()->GetMapName();
 	LevelName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-	if (LevelName == "MainMenu")
-		UGameplayStatics::PlaySoundAtLocation(GetWorld(), MainMenuSound, GetActorLocation(), 0.4f, 1.0f, 0.0f);
+	//if (LevelName == "MainMenu")
+	//	UGameplayStatics::PlaySoundAtLocation(GetWorld(), MainMenuSound, GetActorLocation(), 0.4f, 1.0f, 0.0f);
 	Super::BeginPlay();
 	Light->SetIntensity(0);
 	activated = false;

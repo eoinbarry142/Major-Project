@@ -105,12 +105,6 @@ void AMajorProjectCharacter::OnResetVR()
 	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
 }
 
-//void AMajorProjectCharacter::BeginPlay()
-//{
-//	if (GEngine)
-//		GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("BeginPlay"));
-//}
-
 void AMajorProjectCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 		Jump();
@@ -213,6 +207,11 @@ void AMajorProjectCharacter::ShrineCountIncrement()
 			}
 		}
 	}
+}
+
+void AMajorProjectCharacter::ResetShrineCount()
+{
+	shrineCount = 0;
 }
 
 void AMajorProjectCharacter::WinScreen()
