@@ -42,6 +42,15 @@ void AShrineInteractable::BeginPlay()
 	InteractionWidget->SetVisibility(false);
 	//ShrineMesh->SetMaterial(0, MaterialTwo);
 	ShrineMesh->SetScalarParameterValueOnMaterials(TEXT("Runes"), 0.f);
+
+	for (TObjectIterator<AMajorProjectCharacter> Itr; Itr; ++Itr)
+	{
+		if (Itr->IsA(AMajorProjectCharacter::StaticClass()))
+		{
+			AMajorProjectCharacter* actorClass = *Itr;
+			actorClass->ResetShrineCount();
+		}
+	}
 }
 
 // Called every frame

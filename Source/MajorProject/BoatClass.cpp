@@ -40,14 +40,17 @@ void ABoatClass::InteractWithMe()
 	if (activated == false && isReady == true) {
 		//Turn off widget
 		InteractionWidget->SetVisibility(false);
+
 		//Get level name
 		LevelName = GetWorld()->GetMapName();
 		LevelName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
-		//Open new map
+
+		//Open new map depending on what map player is currently in
 		if (LevelName == "Island")
 			UGameplayStatics::OpenLevel(GetWorld(), FName("WinMenu"));
 		else
 			UGameplayStatics::OpenLevel(GetWorld(), FName("WinMenu2"));
+
 		//Make sure can't be activated again
 		activated = true;
 	}
