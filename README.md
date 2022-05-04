@@ -4,7 +4,7 @@
 This is my 4th year Major Project that is currently in development. It is a game called Mana developed using Unreal Engine 4 in C++. In Mana, your only objective is to explore islands in search of shrines. When all of the shrines on the island have been found, the player can return to their boat to sail to the next island. Mana was created to be a sensory experience in an attempt to benefit the player's mental health. The game has minimum HUD elements and tranquil sounds to immerse and relax the player. The foliage and rocks on the islands are procedurally generated to give the player the feeling that they are exploring something new and untouched.
 
 ## Features
-* Procedural generation scripts written in C++ to randomly spawn shrines on complex landscape.
+* Procedural generation scripts written in C++ to randomly spawn shrines, foliage and other objects on complex landscape.
 * Player interaction with shrines.
 * More features currently in development...
 
