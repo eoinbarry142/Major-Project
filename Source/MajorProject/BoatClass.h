@@ -9,6 +9,7 @@
 #include "Components/WidgetComponent.h"
 #include "MajorProjectCharacter.h"
 #include <Kismet/GameplayStatics.h>
+#include "Blueprint/UserWidget.h"
 
 #include "BoatClass.generated.h"
 
@@ -32,6 +33,11 @@ public:
 
 	void Ready();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Widgets")
+		TSubclassOf<class UUserWidget> wCrossHairWidget;
+
+	UUserWidget* CrossHairWidget;
+
 protected:
 
 	// Called when the game starts or when spawned
@@ -49,4 +55,6 @@ private:
 
 	bool activated;
 	bool isReady = false;
+
+	FString LevelName;
 };

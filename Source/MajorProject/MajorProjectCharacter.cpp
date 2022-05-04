@@ -192,8 +192,8 @@ void AMajorProjectCharacter::OnBoxEndOverlap(UPrimitiveComponent * OverlappedCom
 
 void AMajorProjectCharacter::ShrineCountIncrement()
 {
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("called"));
+	//if (GEngine)
+	//	GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("called"));
 	shrineCount = shrineCount + 1;
 	//UE_LOG(LogTemp, Warning, TEXT("Text, %d"), shrineCount);
 
@@ -201,8 +201,8 @@ void AMajorProjectCharacter::ShrineCountIncrement()
 	{
 		//GetWorld()->GetTimerManager().SetTimer(_loopTimerHandle, this, &AMajorProjectCharacter::WinScreen, 3.5f, false);
 
-		if (GEngine)
-			GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("4"));
+		//if (GEngine)
+		//	GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("4"));
 
 		for (TObjectIterator<ABoatClass> Itr; Itr; ++Itr)
 		{
@@ -217,7 +217,7 @@ void AMajorProjectCharacter::ShrineCountIncrement()
 
 void AMajorProjectCharacter::WinScreen()
 {
-	UGameplayStatics::OpenLevel(GetWorld(), FName("WinMenu"));
+	
 }
 
 void AMajorProjectCharacter::Settings()

@@ -40,8 +40,14 @@ void ABoatClass::InteractWithMe()
 	if (activated == false && isReady == true) {
 		//Turn off widget
 		InteractionWidget->SetVisibility(false);
+		//Get level name
+		LevelName = GetWorld()->GetMapName();
+		LevelName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
 		//Open new map
-		UGameplayStatics::OpenLevel(GetWorld(), FName("WinMenu"));
+		if (LevelName == "Island")
+			UGameplayStatics::OpenLevel(GetWorld(), FName("WinMenu"));
+		else
+			UGameplayStatics::OpenLevel(GetWorld(), FName("WinMenu2"));
 		//Make sure can't be activated again
 		activated = true;
 	}
@@ -61,6 +67,16 @@ void ABoatClass::HideInteractionWidget()
 
 void ABoatClass::Ready() {
 	isReady = true;
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("ready"));
+
+	if (wCrossHairWidget) {
+		auto name = FName(TEXT("CH"));
+		CrossHairWidget = CreateWidget<UUserWidget>(GetGameInstance(), wCrossHairWidget, name);
+		if (CrossHairWidget)
+		{
+			CrossHairWidget->AddToViewport();
+		}
+	}
+
+	//if (GEngine)
+	//	GEngine->AddOnScreenDebugMessage(1, 2.0f, FColor::Yellow, TEXT("ready"));
 }

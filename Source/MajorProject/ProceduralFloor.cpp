@@ -118,26 +118,26 @@ void AProceduralFloor::PlacePointsOnGrid()
 
 					if (SurfaceName.ToString() == "SurfaceType_Default")
 					{
-						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("SurfaceType_Default")));
+						//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("SurfaceType_Default")));
 					}
 					//Grass
 					else if (SurfaceName.ToString() == "SurfaceType1")
 					{
-						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Grass")));
+						//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Grass")));
 						GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
 						temp += 1;
 					}
 					//Sand
 					else if (SurfaceName.ToString() == "SurfaceType2")
 					{
-						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Sand")));
+						//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Sand")));
 						GetWorld()->SpawnActor<AActor>(ShrineClass, impact, FRotator(0.f, RandomYaw, 0.f));
 						temp += 1;
 					}
 					//Water
 					else if (SurfaceName.ToString() == "SurfaceType3")
 					{
-						GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Water")));
+						//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Water")));
 					}
 					//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Orange, FString::Printf(TEXT("Trace Hit: %s "), *Hit.GetActor()->GetName()));
 				}

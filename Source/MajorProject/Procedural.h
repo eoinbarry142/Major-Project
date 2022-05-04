@@ -39,6 +39,12 @@ private:
 		TSubclassOf<AActor> TreeClass1;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
 		TSubclassOf<AActor> TreeClass2;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
+		TSubclassOf<AActor> RedTreeClass1;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Floor, meta = (AllowPrivateAccess = "true"))
+		TSubclassOf<AActor> RedTreeClass2;
+
+	FString LevelName;
 
 	//Function to spawn blueprint actors into the world
 	//void SpawnObject(UClass* ObjectToSpawn);

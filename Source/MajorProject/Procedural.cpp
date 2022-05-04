@@ -119,6 +119,10 @@ void AProcedural::PlacePointsOnGrid()
 				{
 					SurfaceNo = FMath::FRandRange(1, 5);
 
+					//Get level name
+					LevelName = GetWorld()->GetMapName();
+					LevelName.RemoveFromStart(GetWorld()->StreamingLevelsPrefix);
+
 					if (SurfaceNo == 1)
 						GetWorld()->SpawnActor<AActor>(RockClass1, impact, FRotator(Random1, Random2, Random3));
 					else if (SurfaceNo == 2)
@@ -126,9 +130,19 @@ void AProcedural::PlacePointsOnGrid()
 					else if (SurfaceNo == 3)
 						GetWorld()->SpawnActor<AActor>(RockClass3, impact, FRotator(Random1, Random2, Random3));
 					else if (SurfaceNo == 4)
-						GetWorld()->SpawnActor<AActor>(TreeClass1, impact, FRotator(0.f, Random2, 0.f));
+					{
+						if (LevelName == "RedIsland")
+							GetWorld()->SpawnActor<AActor>(RedTreeClass1, impact, FRotator(0.f, Random2, 0.f));
+						else
+							GetWorld()->SpawnActor<AActor>(TreeClass1, impact, FRotator(0.f, Random2, 0.f));
+					}
 					else if (SurfaceNo == 5)
-						GetWorld()->SpawnActor<AActor>(TreeClass2, impact, FRotator(0.f, Random2, 0.f));
+					{
+						if (LevelName == "RedIsland")
+							GetWorld()->SpawnActor<AActor>(RedTreeClass2, impact, FRotator(0.f, Random2, 0.f));
+						else
+							GetWorld()->SpawnActor<AActor>(TreeClass2, impact, FRotator(0.f, Random2, 0.f));
+					}
 				}
 			}
 		}
